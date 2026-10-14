@@ -3,13 +3,16 @@ node_modules/
 .pnp
 .pnp.js
 
-# Testing & Logs
+# Testing, Logs & Diagnostic Dumps
 coverage/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+content.txt
+dom.html
+err.txt
 
 # Environment & Secrets
 .env
@@ -34,8 +37,10 @@ desktop.ini
 *.raw
 *.tmp
 *.temp
+*.part*
 *shot*.png
-check_header.js
+check_*.js
+log_server.js
 
 # Build output & caches
 dist/
@@ -43,3 +48,6 @@ build/
 .cache/
 .parcel-cache/
 gemini-code-*.md
+
+# Local Agent Workspace Data
+.agents/
