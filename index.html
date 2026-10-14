@@ -636,10 +636,29 @@
   .framer-nog87y,
   .framer-1q265n2,
   .framer-17tt45l,
-  .framer-1y6vy0u,
-  .framer-1crmr4g {
+  .framer-1y6vy0u {
     position: relative !important;
     z-index: 2 !important;
+  }
+  /* 1. Hide command box ($ npx karman launch ./model) */
+  [data-framer-name="Command"],
+  .framer-1crmr4g {
+    display: none !important;
+  }
+  /* 2. Hide Careers link in Footer */
+  .framer-m3vsj0 {
+    display: none !important;
+  }
+  /* 3. Hide FAQ link and Big KARMAN Wordmark in Footer */
+  .framer-16iahuj,
+  footer .framer-cu3frl {
+    display: none !important;
+  }
+  /* 4 & 5. Hide ALL SYSTEMS NOMINAL in Top Header and Footer Bottom Bar */
+  [data-framer-name="Status"],
+  .framer-1vbzwv9,
+  .framer-15ooanl {
+    display: none !important;
   }
 </style>
 
