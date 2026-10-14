@@ -1,0 +1,19 @@
+{
+  "name": "gscraper-marketing-site",
+  "version": "1.0.0",
+  "description": "High-performance marketing website with 100% offline assets, Framer interactions, and 3D globe hero component.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve . -l 3000",
+    "start": "serve . -l 3000",
+    "serve:py": "python -m http.server 3000"
+  },
+  "keywords": [
+    "marketing",
+    "framer",
+    "threejs",
+    "offline"
+  ],
+  "author": "",
+  "license": "ISC"
+}
