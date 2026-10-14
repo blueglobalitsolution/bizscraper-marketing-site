@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "persona-team-lead": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "skillPath": "skills/persona-team-lead/SKILL.md",
+      "computedHash": "1d0758cd71f407e426eca69c9e377e4ed54b54991d2d1d44183e5b6acf5cf303"
+    }
+  }
+}
