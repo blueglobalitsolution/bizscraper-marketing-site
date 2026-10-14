@@ -42,3 +42,4 @@ dist/
 build/
 .cache/
 .parcel-cache/
+gemini-code-*.md
