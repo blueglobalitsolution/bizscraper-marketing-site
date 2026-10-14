@@ -1,0 +1,2 @@
+import{t as e}from"./rolldown-runtime.Dh6celcD.mjs";function t(e,t){return{description:`Karman deploys, scales and monitors AI models on GPUs in 38 regions from one command, with live telemetry on every request.`,favicon:`https://framerusercontent.com/assets/kFkW6hF5Uk0E9ADOnDzwbf461Y4.svg`,robots:`max-image-preview:large`,title:`Karman — Launch AI models to every region on Earth`}}var n=e((()=>{}));export{t as n,n as t};
+//# sourceMappingURL=siteMetadata.-ClEVs4U.mjs.map

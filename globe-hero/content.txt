@@ -1,0 +1,257 @@
+
+	
+	
+    
+    
+	
+	:root body { background: var(--token-fc228e08-12be-42fd-8404-db28b05e3094); }News · Orsund opens a 4,200-pallet GDP cold hub in RotterdamControl tower open 24/7  ·  Rotterdam · Nairobi · Valparaíso · SingaporeORSUNDServicesQuoteTrackingIndustriesLocationsInsightsCareers24/7 desk +31 10 555 0140Get a quotehtml body { background: var(--token-fc228e08-12be-42fd-8404-db28b05e3094); }
+.stw-root{position:relative;width:100%;height:100%;overflow:hidden;background:rgb(4, 9, 12);cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.stw-root.drag{cursor:grabbing}
+.stw-root canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stw-labels{position:absolute;inset:0;pointer-events:none}
+.stw-tag{position:absolute;left:0;top:0;display:flex;align-items:center;gap:6px;font:500 10px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgb(247, 251, 250);white-space:nowrap;will-change:transform,opacity}
+.stw-tag i{position:absolute;left:0;top:0;width:18px;height:1px;background:currentColor;opacity:.5;transform:translate(0,0)}
+.stw-tag span{margin-left:22px;padding:4px 6px;border:1px solid rgba(247,251,250,.22);background:rgba(4,9,12,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.stw-tag b{font-weight:400;opacity:0;max-width:0;overflow:hidden;transition:opacity .4s,max-width .5s}
+.stw-tag.on span{border-color:rgb(200, 255, 60);color:rgb(200, 255, 60)}
+.stw-tag.on b{opacity:.8;max-width:140px}
+.stw-lens{position:absolute;left:0;top:0;margin:22px 0 0 22px;padding:9px 11px 10px;min-width:150px;background:rgba(4,9,12,.72);border:1px solid rgba(88,225,232,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:500 9px/1.2 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,251,250,.6);pointer-events:none;will-change:transform,opacity;opacity:0}
+.stw-lens .t{font:500 22px/1.1 "Geist Mono",monospace;letter-spacing:-.02em;color:rgb(88, 225, 232);margin:4px 0 2px;text-transform:none}
+.stw-lens.hot{border-color:rgba(255,90,60,.6)}.stw-lens.hot .t{color:rgb(255, 90, 60)}
+.stw-lens .y{margin-top:7px;padding-top:6px;border-top:1px solid rgba(247,251,250,.14);color:rgb(200, 255, 60)}
+.stw-probe{position:absolute;left:0;top:0;display:flex;flex-direction:column;gap:3px;transform-origin:0 0;margin:-46px 0 0 14px;padding:7px 9px;background:rgb(200, 255, 60);color:#081013;font:600 13px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.02em;white-space:nowrap;will-change:transform,opacity;clip-path:polygon(0 0,100% 0,100% 100%,10px 100%,0 calc(100% + 8px))}
+.stw-probe .k{font-size:8px;letter-spacing:.14em;opacity:.7}
+.stw-card{position:absolute;right:40px;bottom:40px;width:340px;padding:18px 18px 16px;background:rgba(10,21,25,.62);border:1px solid rgba(247,251,250,.12);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);color:rgb(247, 251, 250);font-family:Geist,Inter,system-ui,sans-serif;will-change:transform,opacity;cursor:default}
+.stw-card:before,.stw-card:after{content:"";position:absolute;width:7px;height:7px;border:1px solid rgb(88, 225, 232);opacity:.8}
+.stw-card:before{left:-4px;top:-4px;border-right:0;border-bottom:0}
+.stw-card:after{right:-4px;bottom:-4px;border-left:0;border-top:0}
+.stw-hd{display:flex;justify-content:space-between;align-items:center;font:500 10px/1 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,251,250,.6)}
+.stw-hd .live{display:flex;gap:6px;align-items:center;color:rgb(200, 255, 60)}
+.stw-hd .live:before{content:"";width:6px;height:6px;border-radius:9px;background:rgb(200, 255, 60);box-shadow:0 0 10px rgb(200, 255, 60);animation:stwBlink 1.4s infinite}
+@keyframes stwBlink{50%{opacity:.25}}
+.stw-chips{display:flex;flex-wrap:wrap;gap:5px;margin:14px 0 14px}
+.stw-chips button{all:unset;cursor:pointer;padding:6px 8px;border:1px solid rgba(247,251,250,.16);font:500 10px/1 "Geist Mono",monospace;letter-spacing:.06em;color:rgba(247,251,250,.75);transition:background .25s,color .25s,border-color .25s,transform .2s}
+.stw-chips button:hover{border-color:rgb(88, 225, 232);color:rgb(247, 251, 250);transform:translateY(-1px)}
+.stw-chips button.on{background:rgb(200, 255, 60);border-color:rgb(200, 255, 60);color:#081013}
+.stw-chips button:focus-visible{outline:1px solid rgb(88, 225, 232);outline-offset:2px}
+.stw-route{font:600 19px/1.12 Unbounded,Geist,sans-serif;letter-spacing:-.02em;text-transform:uppercase}
+.stw-route em{font-style:normal;color:rgb(88, 225, 232);margin:0 .35em}
+.stw-sub{margin-top:6px;font-size:13px;color:rgba(247,251,250,.62)}
+.stw-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:14px;background:rgba(247,251,250,.1);border:1px solid rgba(247,251,250,.1)}
+.stw-grid div{background:rgba(6,14,17,.82);padding:9px 10px}
+.stw-grid small{display:block;font:500 9px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,251,250,.5);margin-bottom:6px}
+.stw-grid strong{font:500 13px/1.2 Geist,sans-serif}
+.stw-grid .rd{color:rgb(200, 255, 60);font:600 15px/1.1 "Geist Mono",monospace}
+.stw-trace{margin-top:12px;position:relative}
+.stw-trace svg{display:block;width:100%;height:64px;overflow:visible}
+.stw-stops{display:flex;justify-content:space-between;margin-top:6px;font:500 8.5px/1 "Geist Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,251,250,.45)}
+.stw-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.stw-foot .el{font:500 10px/1 "Geist Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,251,250,.6)}
+.stw-cta{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;background:rgb(247, 251, 250);color:#081013;font:600 11px/1 Unbounded,Geist,sans-serif;letter-spacing:.02em;text-transform:uppercase;transition:background .25s,transform .2s}
+.stw-cta:hover{background:rgb(200, 255, 60);transform:translateY(-1px)}
+.stw-cta span{transition:transform .25s}
+.stw-cta:hover span{transform:translateX(3px)}
+.stw-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgb(200, 255, 60);transform-origin:0 50%;opacity:.8}
+.stw-card.swap .stw-route,.stw-card.swap .stw-sub,.stw-card.swap .stw-grid{animation:stwIn .7s cubic-bezier(.16,1,.3,1) both}
+.stw-card.swap .stw-sub{animation-delay:.05s}.stw-card.swap .stw-grid{animation-delay:.1s}
+@keyframes stwIn{from{opacity:.0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stw-loader{position:absolute;left:50%;top:50%;width:300px;transform:translate(-50%,-50%);pointer-events:none;display:flex;flex-direction:column;align-items:stretch;text-align:center;color:rgb(247, 251, 250);font:500 10px/1.4 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 0 18px rgba(4,9,12,.9)}
+.stw-loader .big{font:500 76px/1 "Geist Mono",monospace;letter-spacing:-.05em;color:rgb(247, 251, 250);margin:12px 0 16px}
+.stw-loader .track{position:relative;height:1px;background:rgba(247,251,250,.18);max-width:420px}
+.stw-loader .track i{position:absolute;inset:0;background:rgb(200, 255, 60);transform-origin:0 50%}
+.stw-loader .row{display:flex;justify-content:space-between;max-width:420px;color:rgba(247,251,250,.55);margin-top:8px}
+.stw-flood{position:absolute;left:0;right:0;bottom:0;height:70%;pointer-events:none;background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgb(233, 240, 239) 92%)}
+@media (max-width: 809px){
+ .stw-card{left:16px;right:16px;top:92px;bottom:auto;width:auto;padding:0;background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none}
+ .stw-card:before,.stw-card:after,.stw-hd,.stw-sub,.stw-grid,.stw-trace,.stw-foot,.stw-bar{display:none}
+ .stw-chips{flex-wrap:nowrap;overflow-x:auto;margin:0 0 8px;scrollbar-width:none}
+ .stw-chips::-webkit-scrollbar{display:none}
+ .stw-chips button{flex:0 0 auto;background:rgba(4,9,12,.6)}
+ .stw-route{font-size:13px}
+ .stw-mob{display:flex!important}
+ .stw-loader{width:240px}.stw-loader .big{font-size:52px}
+ .stw-tag b{display:none}
+}
+@media (prefers-reduced-motion: reduce){.stw-card.swap *{animation:none!important}}
+NBONairobiAMSAmsterdamVAPValparaísoPHLPhiladelphiaBRUBrusselsGRUSão PauloOSLOsloNRTTokyoTRGTaurangaSINSingaporeCLLCallaoRTMRotterdamLAXLos AngelesDXBDubaiJNBJohannesburgANCAnchorage+0.6°CIN BANDAmbient here+17.1°C24.0°N · 92.0°WYour cargo stays in bandQuote a cold laneLive laneNBO→AMSVAP→PHLBRU→GRUOSL→NRTTRG→SINCLL→RTMTauranga→SingaporeKiwifruit · 0–1°C+0.6°C13 daysKiwifruit · kept at 0 to 1 °CDoor to door13 daysReading now+0.6°CModeOcean · controlled atmosphereOrchardCoolstorePortCoral SeaRetailDay 11 · 20 hQuote this lane →Pre-cooling container ORSU 204811-64.0°CAmbient 21.0°CSet-point 4.0°C@media (prefers-reduced-motion: no-preference){@keyframes foIntroRise{from{opacity:0;translate:0 34px;visibility:hidden;clip-path:inset(0 0 100% 0)}1%{visibility:visible;clip-path:inset(-20% -20% -20% -20%)}to{opacity:1;translate:0 0;visibility:visible;clip-path:inset(-20% -20% -20% -20%)}}
+.fo-hero-intro>*,.fo-page-intro>*{animation:foIntroRise .95s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--fo-d) + var(--fo-i,0) * 90ms)}
+.fo-hero-intro>*,.fo-page-intro>*{display:block}.fo-hero-intro{--fo-d:3.35s}.fo-page-intro{--fo-d:.15s}html.fo-nointro .fo-hero-intro{--fo-d:.15s}
+.fo-hero-intro>*:nth-child(2),.fo-page-intro>*:nth-child(2){--fo-i:1}.fo-hero-intro>*:nth-child(3),.fo-page-intro>*:nth-child(3){--fo-i:3}.fo-hero-intro>*:nth-child(4),.fo-page-intro>*:nth-child(4){--fo-i:4}.fo-hero-intro>*:nth-child(5),.fo-page-intro>*:nth-child(5){--fo-i:5}}—  Cold-chain freight · 41 countriesCold fromfield toshelf.Orsund Coldline moves flowers, fruit, seafood and medicines by air, sea and road, and keeps every load inside its temperature band from the farm gate to the shelf.Get a quoteTrack a shipment—  One operatorWe move cold.We own the reading.Orsund Coldline carries chilled and frozen cargo for 1,400 shippers in 41 countries. One company runs every handoff, from the packhouse door to the shelf, so one team answers for the temperature.About our network→99.6%Loads delivered inside their band, 20252.1MPallets moved last year41Countries with an Orsund planner on the ground
+.sho-root{position:relative;width:100%;height:100%;overflow:hidden;background:rgb(233, 240, 239);color:rgb(8, 16, 19);font-family:Geist,Inter,system-ui,sans-serif}
+.sho-root canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sho-hud{position:absolute;inset:0;pointer-events:none}
+.sho-h2{position:absolute;left:40px;top:96px;margin:0;font:600 64px/0.98 Unbounded,Geist,sans-serif;letter-spacing:-.04em;text-transform:uppercase;color:rgb(8, 16, 19)}
+.sho-h2 span{display:block;overflow:hidden}
+.sho-h2 span i{display:block;font-style:normal;transform:translateY(calc((1 - var(--k,1)) * 105%));transition:transform .1s linear}
+.sho-h2 span:first-child{color:#7E9296}
+.sho-stages{position:absolute;left:24px;bottom:24px;display:grid;grid-template-columns:repeat(4, 190px);gap:0;padding:0 0 16px 16px;background:rgba(233,240,239,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(8,16,19,.14)}
+.sho-stage{padding:14px 18px 0 0;opacity:.38;transition:opacity .5s cubic-bezier(.16,1,.3,1)}
+.sho-stage.on{opacity:1}
+.sho-stage b{display:flex;gap:8px;align-items:center;font:500 10px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+.sho-stage b:before{content:"";width:7px;height:7px;background:rgba(8,16,19,.25);transition:background .4s}
+.sho-stage.on b:before{background:rgb(200, 255, 60);box-shadow:0 0 0 1px rgb(8, 16, 19)}
+.sho-stage p{margin:0;font:400 13px/1.45 Geist,sans-serif;color:rgba(8,16,19,.72)}
+.sho-bar{position:absolute;left:24px;bottom:24px;width:776px;height:2px;background:rgb(8, 16, 19);transform-origin:0 50%}
+.sho-panel{position:absolute;right:40px;top:96px;width:330px;padding:16px 16px 14px;background:rgba(8,16,19,.9);color:#F7FBFA;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sho-panel:before,.sho-panel:after{content:"";position:absolute;width:7px;height:7px;border:1px solid rgb(8, 16, 19)}
+.sho-panel:before{left:-5px;top:-5px;border-right:0;border-bottom:0}.sho-panel:after{right:-5px;bottom:-5px;border-left:0;border-top:0}
+.sho-ph{display:flex;justify-content:space-between;font:500 10px/1 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,251,250,.55)}
+.sho-ph span:last-child{color:rgb(200, 255, 60)}
+.sho-read{display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:14px;border:1px solid rgba(247,251,250,.1)}
+.sho-read div{padding:9px 10px;border-right:1px solid rgba(247,251,250,.1)}
+.sho-read div:last-child{border-right:0}
+.sho-read small{display:block;font:500 8.5px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,251,250,.5);margin-bottom:6px}
+.sho-read strong{font:500 15px/1 "Geist Mono",monospace;letter-spacing:-.02em}
+.sho-read .c{color:rgb(200, 255, 60)}.sho-read .a{color:rgb(255, 90, 60)}
+.sho-chart{margin-top:12px}
+.sho-chart svg{display:block;width:100%;height:120px;overflow:visible}
+.sho-legend{display:flex;gap:14px;margin-top:8px;font:500 9px/1 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,251,250,.55)}
+.sho-legend i{display:inline-block;width:10px;height:2px;margin-right:6px;vertical-align:middle}
+.sho-chip{position:absolute;left:0;top:0;margin:-58px 0 0 -2px;display:flex;flex-direction:column;gap:3px;padding:7px 9px;background:rgb(8, 16, 19);color:#F7FBFA;font:500 9px/1 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;will-change:transform}
+.sho-chip:after{content:"";position:absolute;left:0;bottom:-10px;width:1px;height:10px;background:rgb(8, 16, 19)}
+.sho-chip strong{font:600 15px/1 "Geist Mono",monospace;letter-spacing:-.02em;color:rgb(200, 255, 60)}
+.sho-chip em{font-style:normal;color:rgb(88, 225, 232);display:none}
+.sho-chip.plug em{display:block}
+@media (max-width: 809px){
+ .sho-h2{left:20px;top:72px;font-size:34px}
+ .sho-panel{left:20px;right:20px;top:auto;bottom:118px;width:auto;padding:12px}
+ .sho-chart,.sho-legend{display:none}
+ .sho-stages{left:20px;right:20px;bottom:24px;grid-template-columns:1fr}
+ .sho-stage{display:none}.sho-stage.on{display:block}
+ .sho-bar{left:20px;width:calc(100% - 40px)}
+}
+One container.Four handoffs.One reading.ORSU 204811-626 km/hCargo+3.3°CAmbient+14.6°CBand2–6°CCargoOutside airORSU 204811-6+3.3°CShore power on01 · RoadPre-cooled at the packhouse, sealed, and on the road within the hour. The unit runs off the truck.02 · QuayPlugged into shore power the moment it touches the quay. No unplugged minutes, ever.03 · LiftCrane to vessel in four minutes. The container keeps its own log the whole way up.04 · SeaTwenty-three days across the Pacific, read every fifteen minutes, reported to you daily.—  ServicesEverything cold.One company.Air, ocean and road, cold stores at the airports and ports we use, and brokers who clear the paperwork before the cargo lands.All services→Air→Air cold chainFlowers, fish and medicines on main-deck freighters, with pre-cooling at origin and a cool dolly waiting on the apron at the other end.2 to 8 °C · 15 to 25 °COcean→Ocean reefer40-foot reefers on fixed weekly services, plugged in from packhouse gate to discharge, with controlled atmosphere for fruit that keeps ripening.−30 to +30 °CRoad→Road reeferSingle- and multi-temperature trailers across Europe and North America, with two drivers on long runs so the load never parks.−25 to +25 °CAir · Road→Pharma and GDPValidated lanes, active containers and qualified packaging for vaccines, biologics and clinical trial material, with a QA sign-off at every handoff.2 to 8 °C · 15 to 25 °CWarehouse→Cold storageTemperature-zoned stores at airports and ports for buffer stock, cross-docking, pick and pack, and re-icing.−25 · 0–4 · 2–8 · 15–25 °CClearance→Customs and inspectionsLicensed brokers in every hub who file before the goods land, book phytosanitary and veterinary checks, and keep inspections inside the cold room.AnyOcean · Road→Frozen freightDeep-frozen seafood, ice cream and ready meals in −25 °C reefers and stores, with defrost cycles logged so there are no surprises at receipt.−30 to −18 °CSERVICES SERVICES—  Lane quotePrice a lanein ten seconds.Pick where it starts, where it ends and what it is. The ticket updates as you go. A planner confirms space and the final rate within two working hours.
+.foq{position:relative;width:100%;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;color:rgb(247, 251, 250);font-family:Geist,Inter,system-ui,sans-serif;background:rgb(10, 21, 25);padding:28px;box-sizing:border-box}
+.foq *{box-sizing:border-box}
+.foq-form{min-width:0;display:flex;flex-direction:column;gap:22px;padding:6px 4px}
+.foq-l{font:500 10px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,251,250,.55);margin-bottom:10px;display:flex;justify-content:space-between}
+.foq-l b{font-weight:500;color:rgb(200, 255, 60)}
+.foq-od{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);gap:8px;align-items:end}
+.foq-sel{position:relative}
+.foq-sel select{min-width:0;appearance:none;-webkit-appearance:none;width:100%;height:58px;padding:0 40px 0 16px;background:rgba(247,251,250,0.04);border:1px solid rgba(247,251,250,.16);color:rgb(247, 251, 250);font:600 17px/1 Unbounded,Geist,sans-serif;letter-spacing:-.01em;text-transform:uppercase;cursor:pointer;transition:border-color .25s,background .25s;border-radius:0}
+.foq-sel select:hover,.foq-sel select:focus{border-color:rgb(88, 225, 232);background:rgba(88,225,232,.06);outline:none}
+.foq-sel:after{content:"";position:absolute;right:16px;top:50%;width:7px;height:7px;border-right:1.5px solid rgb(88, 225, 232);border-bottom:1.5px solid rgb(88, 225, 232);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.foq-sel small{position:absolute;left:16px;bottom:-18px;font:400 11px/1 Geist,sans-serif;color:rgba(247,251,250,.5)}
+.foq-swap{all:unset;height:58px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(247,251,250,.16);cursor:pointer;color:rgb(88, 225, 232);font:600 16px/1 Geist,sans-serif;transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .25s}
+.foq-swap:hover{border-color:rgb(88, 225, 232);transform:rotate(180deg)}
+.foq-chips{display:flex;flex-wrap:wrap;gap:6px}
+.foq-chip{all:unset;cursor:pointer;padding:10px 12px;border:1px solid rgba(247,251,250,.16);display:flex;flex-direction:column;gap:5px;min-width:118px;transition:border-color .25s,background .25s,transform .25s cubic-bezier(.16,1,.3,1)}
+.foq-chip span{font:500 13px/1.1 Geist,sans-serif;color:rgb(247, 251, 250)}
+.foq-chip em{font:500 10px/1 "Geist Mono",monospace;font-style:normal;letter-spacing:.06em;color:rgba(247,251,250,.5)}
+.foq-chip:hover{border-color:rgb(88, 225, 232);transform:translateY(-2px)}
+.foq-chip.on{background:rgb(200, 255, 60);border-color:rgb(200, 255, 60)}
+.foq-chip.on span,.foq-chip.on em{color:rgb(8, 16, 19)}
+.foq-seg{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(247,251,250,.16)}
+.foq-seg button{all:unset;cursor:pointer;text-align:center;padding:14px 6px;font:500 11px/1 "Geist Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,251,250,.7);border-right:1px solid rgba(247,251,250,.16);transition:background .25s,color .25s}
+.foq-seg button:last-child{border-right:0}
+.foq-seg button:hover{background:rgba(247,251,250,.06);color:rgb(247, 251, 250)}
+.foq-seg button.on{background:rgb(247, 251, 250);color:rgb(8, 16, 19)}
+.foq-seg button:disabled{opacity:.3;cursor:not-allowed}
+.foq-range{display:flex;align-items:center;gap:16px}
+.foq-range input{flex:1;accent-color:rgb(200, 255, 60);height:2px;cursor:pointer}
+.foq-range output{font:500 28px/1 "Geist Mono",monospace;letter-spacing:-.04em;min-width:64px;text-align:right}
+.foq-t{min-width:0;position:relative;background:rgb(233, 240, 239);color:rgb(8, 16, 19);padding:26px 26px 22px;display:flex;flex-direction:column;clip-path:polygon(0 0,100% 0,100% 58%,calc(100% - 10px) 60%,100% 62%,100% 100%,0 100%,0 62%,10px 60%,0 58%)}
+.foq-th{display:flex;justify-content:space-between;font:500 10px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(8,16,19,.55)}
+.foq-th b{color:rgb(8, 16, 19);font-weight:500}
+.foq-route{display:flex;align-items:flex-end;justify-content:space-between;margin-top:22px;gap:10px}
+.foq-route div{display:flex;flex-direction:column;gap:6px}
+.foq-route strong{font:600 44px/0.9 Unbounded,Geist,sans-serif;letter-spacing:-.05em}
+.foq-route span{font:400 12px/1.2 Geist,sans-serif;color:rgba(8,16,19,.6)}
+.foq-route svg{flex:1;min-width:0;height:54px;overflow:visible}
+.foq-price{margin-top:22px;padding-top:18px;border-top:1px dashed rgba(8,16,19,.25)}
+.foq-price strong{display:block;font:600 34px/1 Unbounded,Geist,sans-serif;letter-spacing:-.04em}
+.foq-price span{display:block;margin-top:8px;font:400 12px/1.4 Geist,sans-serif;color:rgba(8,16,19,.62)}
+.foq-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:20px;border-top:1px solid rgba(8,16,19,.14);border-bottom:1px solid rgba(8,16,19,.14)}
+.foq-grid div{padding:12px 10px 12px 0}
+.foq-grid small{display:block;font:500 9px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(8,16,19,.5);margin-bottom:7px}
+.foq-grid strong{font:500 14px/1.2 Geist,sans-serif}
+.foq-eq{margin-top:14px;font:500 11px/1.5 "Geist Mono",monospace;letter-spacing:.04em;color:rgba(8,16,19,.7)}
+.foq-cta{display:flex;gap:8px;margin-top:auto;padding-top:20px}
+.foq-cta a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:50px;text-decoration:none;font:600 11.5px/1 Unbounded,Geist,sans-serif;letter-spacing:.02em;text-transform:uppercase;transition:background .25s,color .25s,transform .2s}
+.foq-cta a:first-child{background:rgb(8, 16, 19);color:rgb(247, 251, 250)}
+.foq-cta a:first-child:hover{background:rgb(200, 255, 60);color:rgb(8, 16, 19);transform:translateY(-2px)}
+.foq-cta a:last-child{border:1px solid rgba(8,16,19,.3);color:rgb(8, 16, 19)}
+.foq-cta a:last-child:hover{background:rgba(8,16,19,.06);transform:translateY(-2px)}
+.foq-note{margin-top:12px;font:400 11px/1.4 Geist,sans-serif;color:rgba(8,16,19,.5)}
+.foq-anim{animation:foqIn .6s cubic-bezier(.16,1,.3,1)}
+@keyframes foqIn{from{opacity:.25;transform:translateY(6px)}to{opacity:1;transform:none}}
+.foq[data-n="1"]{grid-template-columns:minmax(0,1fr);padding:16px}.foq[data-n="1"] .foq-split{grid-template-columns:minmax(0,1fr)!important}.foq[data-n="1"] .foq-route strong{font-size:30px}.foq[data-n="1"] .foq-sel select{font-size:13px;padding:0 30px 0 12px}.foq[data-n="1"] .foq-chip{flex:1 1 40%}.foq[data-n="1"] .foq-route strong{font-size:34px}.foq[data-n="1"] .foq-grid{grid-template-columns:1fr 1fr}.foq[data-n="1"] .foq-chip{min-width:0;flex:1 1 44%}
+@media (prefers-reduced-motion: reduce){.foq-anim{animation:none}.foq-swap:hover{transform:none}}
+Lane6,678 km great-circleNBO · NairobiAMS · AmsterdamRTM · RotterdamBRU · BrusselsOSL · OsloVAP · ValparaísoCLL · CallaoGRU · São PauloPHL · PhiladelphiaLAX · Los AngelesDXB · DubaiSIN · SingaporeNRT · TokyoTRG · TaurangaJNB · JohannesburgFrom Kenya⇄NBO · NairobiAMS · AmsterdamRTM · RotterdamBRU · BrusselsOSL · OsloVAP · ValparaísoCLL · CallaoGRU · São PauloPHL · PhiladelphiaLAX · Los AngelesDXB · DubaiSIN · SingaporeNRT · TokyoTRG · TaurangaJNB · JohannesburgTo NetherlandsCargo and temperature band2 to 4 °CCut flowers2 to 4 °CVaccines & pharma2 to 8 °CFrozen food-25 to -18 °CFresh fruit0 to 1 °CSeafood0 to 2 °CDairy2 to 6 °CModeWe'd pick airBest fitAirOceanRoadPallets08ReadyThis wkNext wkLaterIndicative quote · FO-7678-NBOAMSValid 72 hNBONairobiAMSAmsterdam€ 8,290 – 9,350All-in, door to door, for 8 pallets of cut flowers. Includes pre-cooling, handling, customs filing and the temperature log.Transit30 h 34 mModeAirBand2 to 4 °CCO₂e12.8 tEquipment: 2 × active air containerBook this lane →Talk to a plannerIndicative rate from this week's tariff. A planner confirms space and the final price within two working hours.—  Temperature bandsFour bands.No guesswork.Every quote names the band it has to hold. Every probe reports against it. If a reading leaves the band, you hear from us before the alarm does.01 · Frozen−25 °CIce cream, frozen seafood, ready meals, bakery dough.02 · Chilled0–4 °CCut flowers, fresh fish, berries, salads, fresh meat.03 · Pharma2–8 °CVaccines, insulin, biologics, clinical trial kits.04 · Controlled15–25 °CTablets, chocolate, wine, cosmetics that dislike heat.—  TrackingSee the reading,not just the dot.Other trackers show where your freight is. Ours shows how cold it is, every fifteen minutes, from the moment it is sealed.Open tracking→
+.fot{position:relative;width:100%;background:rgb(247, 251, 250);color:rgb(8, 16, 19);font-family:Geist,Inter,system-ui,sans-serif;padding:0;box-sizing:border-box}
+.fot *{box-sizing:border-box}
+.fot-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;background:rgb(255, 255, 255);border:1px solid rgba(8,16,19,.12);padding:8px}
+.fot-bar label{display:flex;flex-direction:column;justify-content:center;padding:0 12px}
+.fot-bar small{font:500 9.5px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgb(126, 146, 150);margin-bottom:6px}
+.fot-bar input{all:unset;font:600 22px/1.2 Unbounded,Geist,sans-serif;letter-spacing:-.02em;text-transform:uppercase;color:rgb(8, 16, 19);width:100%}
+.fot-go{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;padding:0 26px;background:rgb(8, 16, 19);color:#F7FBFA;font:600 12px/1 Unbounded,Geist,sans-serif;text-transform:uppercase;letter-spacing:.02em;transition:background .25s,color .25s}
+.fot-go:hover{background:rgb(200, 255, 60);color:rgb(8, 16, 19)}
+.fot-demo{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center;font:500 10px/1 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgb(126, 146, 150)}
+.fot-demo button{all:unset;cursor:pointer;padding:7px 9px;border:1px solid rgba(8,16,19,.16);color:rgb(8, 16, 19);transition:background .25s,border-color .25s}
+.fot-demo button:hover,.fot-demo button.on{background:rgb(8, 16, 19);color:#F7FBFA;border-color:rgb(8, 16, 19)}
+.fot-res{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);min-width:0;gap:16px;margin-top:16px;animation:fotIn .7s cubic-bezier(.16,1,.3,1)}
+@keyframes fotIn{from{opacity:.2;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fot-card{background:rgb(255, 255, 255);border:1px solid rgba(8,16,19,.1);padding:22px}
+.fot-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.fot-pill{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;background:rgb(8, 16, 19);color:rgb(200, 255, 60);font:500 10px/1 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.fot-pill:before{content:"";width:6px;height:6px;border-radius:9px;background:rgb(200, 255, 60);animation:fotB 1.4s infinite}
+@keyframes fotB{50%{opacity:.3}}
+.fot-route{margin:18px 0 6px;font:600 30px/1 Unbounded,Geist,sans-serif;letter-spacing:-.04em;text-transform:uppercase}
+.fot-route em{font-style:normal;color:rgb(126, 146, 150);margin:0 .3em}
+.fot-sub{font:400 13px/1.4 Geist,sans-serif;color:rgb(126, 146, 150)}
+.fot-prog{position:relative;height:2px;background:rgba(8,16,19,.12);margin:22px 0 8px}
+.fot-prog i{position:absolute;left:0;top:0;bottom:0;background:rgb(8, 16, 19)}
+.fot-prog b{position:absolute;top:-6px;width:14px;height:14px;background:rgb(200, 255, 60);border:1px solid rgb(8, 16, 19);transform:translateX(-50%) rotate(45deg)}
+.fot-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(8,16,19,.1);border:1px solid rgba(8,16,19,.1);margin-top:18px}
+.fot-meta div{background:rgb(255, 255, 255);padding:12px}
+.fot-meta small{display:block;font:500 9px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgb(126, 146, 150);margin-bottom:7px}
+.fot-meta strong{font:500 14px/1.25 Geist,sans-serif}
+.fot-meta .big{font:600 22px/1 "Geist Mono",monospace;letter-spacing:-.03em}
+.fot-tl{list-style:none;margin:20px 0 0;padding:0}
+.fot-tl li{position:relative;display:grid;grid-template-columns:110px 1fr auto;gap:12px;padding:12px 0 12px 22px;border-top:1px solid rgba(8,16,19,.08);font-size:13px;line-height:1.35}
+.fot-tl li:before{content:"";position:absolute;left:4px;top:17px;width:7px;height:7px;background:rgb(8, 16, 19)}
+.fot-tl li.todo{color:rgb(126, 146, 150)}
+.fot-tl li.todo:before{background:none;border:1px solid rgb(126, 146, 150)}
+.fot-tl li.now:before{background:rgb(200, 255, 60);box-shadow:0 0 0 3px rgba(200,255,60,.35)}
+.fot-tl time{font:500 10.5px/1.35 "Geist Mono",monospace;letter-spacing:.04em;text-transform:uppercase}
+.fot-tl b{display:block;font-weight:500}
+.fot-tl span.r{font:500 11px/1 "Geist Mono",monospace;padding-top:2px}
+.fot-chart svg{display:block;width:100%;height:auto;overflow:visible}
+.fot-legend{display:flex;gap:16px;margin-top:10px;font:500 9.5px/1 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgb(126, 146, 150)}
+.fot-empty{margin-top:16px;padding:40px;border:1px dashed rgba(8,16,19,.25);text-align:center;font:400 14px/1.5 Geist,sans-serif;color:rgb(126, 146, 150)}
+.fot[data-n="1"] .fot-res{grid-template-columns:minmax(0,1fr)}.fot[data-n="1"] .fot-meta{grid-template-columns:1fr 1fr}.fot[data-n="1"] .fot-card{padding:16px}.fot[data-n="1"] .fot-route{font-size:18px;overflow-wrap:anywhere}.fot[data-n="1"] .fot-tl li{grid-template-columns:84px 1fr}.fot[data-n="1"] .fot-tl span.r{display:none}.fot[data-n="1"] .fot-bar input{font-size:16px}.fot[data-n="1"] .fot-go{padding:0 16px}
+@media (prefers-reduced-motion: reduce){.fot-res{animation:none}}
+Container, air waybill or booking numberTrack →Try a demo:ORSU 204811-6FO-AIR-77310ORSU 118402-2In transit · in bandORSU 204811-6Valparaíso→PhiladelphiaTable grapes · 20 pallets · Ocean · MV Kestrel BayReading now+0.4°CBand0 to 1 °CETAThu 02 Oct · 14:00Sep 16 · 06:10Picked and pre-cooled to 0.5 °CVineyard, Aconcagua0.5°CSep 16 · 19:40Sealed · probe log startedPackhouse, Los Andes0.4°CSep 17 · 09:15Gate-in · plugged to shore powerPort of Valparaíso0.6°CSep 18 · 22:30Loaded on MV Kestrel Bay, bay 14Valparaíso0.5°CSep 25 · 03:05Transit · reefer check passedPanama Canal0.7°COct 02 · 14:00Discharge and customs releasePort of Philadelphia—Oct 03 · 08:00Cross-dock to retail trailersOrsund DC, Swedesboro—Temperature log · every 15 min246 readings · 0 excursions1 °C0 °CNOWSEALED▬ Cargo probe▮ Agreed bandDoor openings2 · both logged, under 90 sPowerVessel supply · genset armedHumidity90% RH · CA 5% O₂Next reportEmail + API · 06:00 local—  IndustriesBuilt aroundwhat spoils.Each industry has its own clock: hours for fish and flowers, days for fruit, a validated lane for vaccines. We plan to that clock.Explore industries→2–4 °CFlowersFarm to auction clock in 36 hours.0–1 °CFruitControlled atmosphere adds a week of shelf life.0–2 °CSeafoodLanded, packed and flown the same night.2–8 °CPharmaValidated lanes with a QA sign-off at every handoff.2–6 °CDairyMilk powder to fresh cheese, across four continents.−25 °CFrozenDefrost cycles logged, so buyers can see nothing thawed.—  Why OrsundLogistics thatkeeps its cool.Five things we do on every load, whether it is one pallet of insulin or forty reefers of grapes.01One contactOne planner owns your lane end to end. No chasing between forwarders, airlines and hauliers.02Live probesA probe in every load, reporting every fifteen minutes to you and to us.03Pre-cooledCargo is at its set-point before it moves. We never ask a reefer to cool warm fruit.04Filed earlyCustoms and inspections are booked before arrival, so nothing waits on a hot dock.05Straight answersIf a reading drifts, we call you with what happened and what we are doing about it.—  NetworkNine cold hubs.Always one awake.Our hubs sit at the airports and ports our lanes use. Whatever the hour where you are, a planner is on shift somewhere with your shipment on screen.All locations→
+.foh{position:relative;width:100%;height:100%;overflow:hidden;background:rgb(4, 9, 12);color:rgb(247, 251, 250);font-family:Geist,Inter,system-ui,sans-serif}
+.foh canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.foh-pin{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border:0;background:none;cursor:pointer;padding:0}
+.foh-pin:focus-visible{outline:1px solid rgb(200, 255, 60);outline-offset:2px}
+.foh-card{position:absolute;right:24px;bottom:24px;width:320px;padding:18px;background:rgba(10,21,25,.78);border:1px solid rgba(247,251,250,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);animation:fohIn .6s cubic-bezier(.16,1,.3,1)}
+@keyframes fohIn{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
+.foh-card small{display:block;font:500 9.5px/1 "Geist Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,251,250,.55)}
+.foh-card h4{margin:10px 0 4px;font:600 26px/1 Unbounded,Geist,sans-serif;letter-spacing:-.03em;text-transform:uppercase}
+.foh-card p{margin:10px 0 0;font:400 13px/1.5 Geist,sans-serif;color:rgba(247,251,250,.72)}
+.foh-kv{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:14px;background:rgba(247,251,250,.1);border:1px solid rgba(247,251,250,.1)}
+.foh-kv div{background:rgba(6,14,17,.9);padding:10px}
+.foh-kv strong{display:block;margin-top:6px;font:500 13px/1.3 Geist,sans-serif}
+.foh-kv .clock{font:500 18px/1 "Geist Mono",monospace;color:rgb(200, 255, 60)}
+.foh-list{position:absolute;left:24px;bottom:24px;display:flex;flex-wrap:wrap;gap:5px;max-width:52%}
+.foh-list button{all:unset;cursor:pointer;padding:7px 9px;border:1px solid rgba(247,251,250,.16);font:500 10px/1 "Geist Mono",monospace;letter-spacing:.08em;color:rgba(247,251,250,.75);background:rgba(4,9,12,.5);transition:background .25s,color .25s,border-color .25s}
+.foh-list button:hover{border-color:rgb(88, 225, 232);color:rgb(247, 251, 250)}
+.foh-list button.on{background:rgb(200, 255, 60);border-color:rgb(200, 255, 60);color:#081013}
+.foh[data-n="1"] .foh-card{left:12px;right:12px;bottom:12px;width:auto;padding:14px}.foh[data-n="1"] .foh-list{left:12px;top:12px;bottom:auto;max-width:none}.foh[data-n="1"] .foh-card h4{font-size:20px}
+RTMAMSNBOVAPPHLSINNRTDXBGRUTRGRTM · Cold store + ocean gatewayRotterdamGDP-licensed, opened 2026, 22 reefer plugs on the quay.Local time08:51:44Pallet positions4,200Temperature zones−25 · 0–4 · 2–8 · 15–25 °C—  What shippers say“Our roses used to reach the auction with a day of vase life gone. Since Orsund took over pre-cooling and the flight, buyers pay for the extra day, and we can see the log before they ask.”Grace Njeri · Export manager, a 90-hectare rose farm in Naivasha“Two audits, zero findings on transport. Their QA people talk to our QA people in the same language.”Head of distribution · a vaccine maker in Belgium“The grape season has 11 weeks. Orsund had plugs, space and a planner in the packhouse for all of them.”Logistics director · a fruit exporter in AconcaguaCarriers and partners we fly, sail and drive withKestrel Bay LinesNorthwind Air CargoMeridian FeederSolan AirfreightAlder Reefer RailPelican Shore PowerTarn Cold ParkVanta Coolways—  InsightsWhat’s movingin cold freight.Season notes, lane changes and plain guides to reading a reefer log, from the people who run our hubs.All insights→FlowersWhy we pre-cool roses before they fly5 min read→GuidesReading a reefer log without a data scientist7 min read→OceanThe Panama draught and your grape season4 min read→PharmaGDP audits: what inspectors ask for first6 min read→F.A.Q.Straight answers.Still unsure? Our control tower answers in under a minute, day or night.01How fast can you quote a new lane?Within two working hours for lanes we already run, and within one working day for new ones. The online quote gives you an indicative rate straight away.02What happens if a reading leaves the band?03Can I ship less than a full container?04Do you handle customs and inspections?05Which temperature ranges do you cover?06How do I get the temperature data?—  Ready when you areShip somethingcold with us.Tell us the lane and the band. We’ll come back with space, a price and a planner’s name.Get a quote→Talk to the control tower→Cold fromfield to shelf.Get a quote→Track a shipment→ServicesAir cold chainOcean reeferRoad reeferPharma and GDPCold storageToolsLane quoteShipment trackingHub mapCO₂ per palletCompanyIndustriesLocationsCareersInsightsContact24/7 control tower+31 10 555 0140Rotterdam · Nairobi · Valparaíso · Singapore. A planner answers in under a minute, day or night, and can see your probe log while you talk.ORSUNDColdline© 2026 Orsund Coldline B.V. · Rates shown are indicativeGDP licence NL-GDP-2026-0418 · AEO-F · IATA CEIV Pharma(()=>{function u(){function n(t,e,i){let r=document.createElement("a");r.href=t,r.target=i,r.rel=e,document.body.appendChild(r),r.click(),r.remove()}function o(t){if(this.dataset.hydrated){this.removeEventListener("click",o);return}t.preventDefault(),t.stopPropagation();let e=this.getAttribute("href");if(!e)return;if(/Mac|iPod|iPhone|iPad/u.test(navigator.userAgent)?t.metaKey:t.ctrlKey)return n(e,"","_blank");let r=this.getAttribute("rel")??"",c=this.getAttribute("target")??"";n(e,r,c)}function a(t){if(this.dataset.hydrated){this.removeEventListener("auxclick",o);return}t.preventDefault(),t.stopPropagation();let e=this.getAttribute("href");e&&n(e,"","_blank")}function s(t){if(this.dataset.hydrated){this.removeEventListener("keydown",s);return}if(t.key!=="Enter")return;t.preventDefault(),t.stopPropagation();let e=this.getAttribute("href");if(!e)return;let i=this.getAttribute("rel")??"",r=this.getAttribute("target")??"";n(e,i,r)}document.querySelectorAll("[data-nested-link]").forEach(t=>{t instanceof HTMLElement&&(t.addEventListener("click",o),t.addEventListener("auxclick",a),t.addEventListener("keydown",s))})}return u})()()
+	!function(){var w="framer_variant";function u(a,r){let e=r.indexOf("#"),t=e===-1?r:r.substring(0,e),o=e===-1?"":r.substring(e),n=t.indexOf("?"),h=n===-1?t:t.substring(0,n),d=n===-1?"":t.substring(n),s=new URLSearchParams(d),m=new URLSearchParams(a);for(let[i,l]of m)s.has(i)||i!==w&&s.append(i,l);let c=s.toString();return c===""?t+o:h+"?"+c+o}var g='div#main a[href^="#"],div#main a[href^="/"],div#main a[href^="."]',f="div#main a[data-framer-preserve-params]",S=document.currentScript?.hasAttribute("data-preserve-internal-params");if(window.location.search&&!navigator.webdriver&&!/bot|-google|google-|yandex|ia_archiver|crawl|spider/iu.test(navigator.userAgent)){let a=document.querySelectorAll(S?`${g},${f}`:f);for(let r of a){let e=u(window.location.search,r.href);r.setAttribute("href",e)}}
+}()
+	
+	Create a free website with Framer, the website builder loved by startups, designers and agencies.
+	(()=>{function d(e){let t=Date.prototype.toLocaleString,o=Date.prototype.toLocaleDateString;t&&(Date.prototype.toLocaleString=function(r,n){let i=s(this,r,n);return u(e.current.Date.toLocaleString,i,()=>t.call(this,r,n))}),o&&(Date.prototype.toLocaleDateString=function(r,n){let i=s(this,r,n);return u(e.current.Date.toLocaleDateString,i,()=>o.call(this,r,n))});let a=Object.getOwnPropertyDescriptors(Intl.DateTimeFormat.prototype).format.get,c=Intl.DateTimeFormat.prototype.formatRange,b=Intl.DateTimeFormat.prototype.formatToParts,D=Intl.DateTimeFormat.prototype.formatRangeToParts;a&&Object.defineProperty(Intl.DateTimeFormat.prototype,"format",{get(){function m(r){let n=p(this),i=s(r,n);return u(e.current.DateTimeFormat.format,i,()=>a.call(this)(r))}return m.bind(this)}}),c&&(Intl.DateTimeFormat.prototype.formatRange=function(r,n){let i=p(this),l=s(r,n,i);return u(e.current.DateTimeFormat.formatRange,l,()=>c.call(this,r,n))}),b&&(Intl.DateTimeFormat.prototype.formatToParts=function(r){let n=p(this),i=s(r,n);return u(e.current.DateTimeFormat.formatToParts,i,()=>b.call(this,r)).map(g)}),D&&(Intl.DateTimeFormat.prototype.formatRangeToParts=function(r,n){let i=p(this),l=s(r,n,i);return u(e.current.DateTimeFormat.formatRangeToParts,l,()=>D.call(this,r,n)).map(g)});let y=Number.prototype.toLocaleString;y&&(Number.prototype.toLocaleString=function(r,n){let i=s(this,r,n);return u(e.current.Number.toLocaleString,i,()=>y.call(this,r,n))});let h=Object.getOwnPropertyDescriptors(Intl.NumberFormat.prototype).format.get,F=Intl.NumberFormat.prototype.formatRange,T=Intl.NumberFormat.prototype.formatToParts,I=Intl.NumberFormat.prototype.formatRangeToParts;h&&Object.defineProperty(Intl.NumberFormat.prototype,"format",{get(){function m(r){let n=f(this),i=s(r,n);return u(e.current.NumberFormat.format,i,()=>h.call(this)(r))}return m.bind(this)}}),F&&(Intl.NumberFormat.prototype.formatRange=function(r,n){let i=f(this),l=s(r,n,i);return u(e.current.NumberFormat.formatRange,l,()=>F.call(this,r,n))}),T&&(Intl.NumberFormat.prototype.formatToParts=function(r){let n=f(this),i=s(r,n);return u(e.current.NumberFormat.formatToParts,i,()=>T.call(this,r)).map(g)}),I&&(Intl.NumberFormat.prototype.formatRangeToParts=function(r,n){let i=f(this),l=s(r,n,i);return u(e.current.NumberFormat.formatRangeToParts,l,()=>I.call(this,r,n)).map(g)})}function P(e,t){return typeof t=="bigint"?`${t}n`:t instanceof Date?t.getTime():t}function s(...e){let t=JSON.stringify(e,P),o=0;for(let a=0;a<t.length;a++)o+=t.charCodeAt(a),o+=o<<10,o^=o>>6;return o+=o<<3,o^=o>>11,o+=o<<15,o>>>0}function u(e,t,o){let a=e[t];if(typeof a<"u")return a;let c=o();return e[t]=c,c}function g(e){return{...e}}function p(e){let t=e.resolvedOptions(),o={locale:t.locale,calendar:t.calendar,numberingSystem:t.numberingSystem,timeZone:t.timeZone,hour12:t.hour12,weekday:t.weekday,era:t.era,year:t.year,month:t.month,day:t.day,hour:t.hour,minute:t.minute,second:t.second,timeZoneName:t.timeZoneName};for(let a in t)a in o||(o[a]=t[a]);return o}function f(e){let t=e.resolvedOptions(),o={locale:t.locale,numberingSystem:t.numberingSystem,style:t.style,currency:t.currency,currencyDisplay:t.currencyDisplay,currencySign:t.currencySign,unit:t.unit,unitDisplay:t.unitDisplay,minimumIntegerDigits:t.minimumIntegerDigits,minimumFractionDigits:t.minimumFractionDigits,maximumFractionDigits:t.maximumFractionDigits,minimumSignificantDigits:t.minimumSignificantDigits,maximumSignificantDigits:t.maximumSignificantDigits,useGrouping:t.useGrouping===!0?"auto":t.useGrouping,notation:t.notation,compactDisplay:t.compactDisplay,signDisplay:t.signDisplay,roundingIncrement:t.roundingIncrement??1,roundingMode:t.roundingMode??"halfExpand",roundingPriority:t.roundingPriority??"auto",trailingZeroDisplay:t.trailingZeroDisplay??"auto"};for(let a in t)a in o||(o[a]=t[a]);return o}return d})()({current:{"Date":{"toLocaleString":{},"toLocaleDateString":{}},"DateTimeFormat":{"format":{},"formatRange":{},"formatToParts":{},"formatRangeToParts":{}},"Number":{"toLocaleString":{"594591974":"8,290","802144324":"6,678","2072731821":"2.1","2266311077":"99.6","3427880505":"41","4166613968":"9,350"}},"NumberFormat":{"format":{},"formatRange":{},"formatToParts":{},"formatRangeToParts":{}}}})
+	typeof document<"u"&&(window.process={...window.process,env:{...window.process?.env,NODE_ENV:"production"}});
+	
+
+	
+    
+    
+
+
+Edit Content
