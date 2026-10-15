@@ -562,35 +562,17 @@
     }
   });
 
-  // -------------------------------------------------------------
-  // PERMANENT HEADER AUTH STATE WATCHER
-  // -------------------------------------------------------------
-  function runSync() {
-    if (window.ReachEngine && window.ReachEngine.syncHeaderAuthUI) {
-      window.ReachEngine.syncHeaderAuthUI();
-    }
-  }
-
-  // 1. Initial execution
-  runSync();
-
-  // 2. DOM lifecycle hooks
+  // Initial check on load
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", runSync);
-  }
-  window.addEventListener("load", runSync);
-
-  // 3. Fast post-hydration sync for 10 seconds
-  const syncTimer = setInterval(runSync, 200);
-  setTimeout(() => clearInterval(syncTimer), 10000);
-
-  // 4. MutationObserver to instantly restore button state when React re-renders
-  try {
-    const observer = new MutationObserver(() => {
-      runSync();
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
     });
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-  } catch(e) {}
+  } else {
+    if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
+  }
+  window.addEventListener("load", function() {
+    if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
+  });
 
   console.log("ReachEngine Developer Portal, Auth & Dynamic Login/Dashboard Initialized!");
 })();
