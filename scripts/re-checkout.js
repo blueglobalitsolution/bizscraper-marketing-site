@@ -234,33 +234,32 @@
     }
   };
 
-  // CAPTURE ALL CLICKS AT ROOT (Capture Phase)
-  window.addEventListener("click", function(e) {
-    let el = e.target;
-    while (el && el !== document.body) {
-      const text = (el.textContent || "").trim();
-      const isStartFree = text.includes("Start free") || text.includes("START FREE") || text.includes("Download Free") || text.includes("Get ReachEngine Free");
-      const isBuyPro = text.includes("Buy Unlimited") || text.includes("BUY UNLIMITED") || text.includes("Buy Pro");
+  // TARGETED CLICK HANDLER: ONLY INTERCEPT SPECIFIC ACTION BUTTONS
+  document.addEventListener("click", function(e) {
+    const btn = e.target.closest("a, button");
+    if (!btn) return;
 
-      if (isStartFree && !el.classList.contains("re-modal-card") && !el.closest(".re-modal-card")) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        window.ReachEngine.openModal("re-download-modal");
-        return false;
-      }
-
-      if (isBuyPro && !el.classList.contains("re-modal-card") && !el.closest(".re-modal-card")) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        window.ReachEngine.openModal("re-buy-modal");
-        return false;
-      }
-
-      el = el.parentElement;
+    // Never intercept inside the modal itself
+    if (btn.closest(".re-modal-card") || btn.classList.contains("re-modal-close")) {
+      return;
     }
-  }, true); // TRUE = Capture phase intercept!
 
-  console.log("ReachEngine Checkout & Download System Initialized with Root Capture!");
+    const text = (btn.innerText || btn.textContent || "").trim();
+
+    // STRICT CHECK: Only trigger for actual Download/Start buttons, NEVER navigation links!
+    const isExactStartFree = /^Start free\s*→?$/i.test(text) || /^Download Free\s*→?$/i.test(text) || /^Get ReachEngine Free\s*→?$/i.test(text);
+    const isExactBuyPro = /^Buy Unlimited\s*→?$/i.test(text) || /^Buy Pro\s*→?$/i.test(text) || /^Get Unlimited\s*→?$/i.test(text);
+
+    if (isExactStartFree) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.ReachEngine.openModal("re-download-modal");
+    } else if (isExactBuyPro) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.ReachEngine.openModal("re-buy-modal");
+    }
+  });
+
+  console.log("ReachEngine Checkout & Download System Initialized (Strict Targeted Mode)!");
 })();
