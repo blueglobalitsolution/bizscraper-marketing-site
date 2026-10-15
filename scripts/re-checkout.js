@@ -370,7 +370,9 @@
     handleLogout: function() {
       this.currentUser = null;
       localStorage.removeItem("re_user");
+      this.switchAuthTab("login");
       this.renderDashboardState();
+      this.syncHeaderAuthUI();
     },
 
     // 4. Render Dashboard View
@@ -436,6 +438,8 @@
         if (authView) authView.style.display = "block";
         if (dashView) dashView.style.display = "none";
       }
+
+      this.syncHeaderAuthUI();
     },
 
     // 5. Razorpay Pro Upgrade Flow
@@ -470,6 +474,7 @@
             self.currentUser.apiKey = proKey;
             localStorage.setItem("re_user", JSON.stringify(self.currentUser));
             self.renderDashboardState();
+            self.syncHeaderAuthUI();
           }
           alert("Payment Successful!\nYour account has been upgraded to Unlimited Pro.\nNew Pro API Key: " + proKey);
         }
@@ -477,6 +482,41 @@
 
       const rzp = new Razorpay(options);
       rzp.open();
+    },
+
+    // 6. Header Auth Button Click Handler
+    handleHeaderAuthClick: function() {
+      if (this.currentUser) {
+        // Logged in: open Dashboard View directly
+        this.openModal("re-account-modal");
+      } else {
+        // Not logged in: open Sign In tab directly
+        this.switchAuthTab("login");
+        this.openModal("re-account-modal");
+      }
+    },
+
+    // 7. Sync Header Action Button (Login vs Dashboard)
+    syncHeaderAuthUI: function() {
+      // Clean up any stale dashboard link from navigation links
+      document.querySelectorAll('.re-nav-dashboard').forEach(el => el.remove());
+
+      const isAuth = !!this.currentUser;
+      const targetText = isAuth ? "Dashboard" : "Login";
+
+      // Find all header action buttons
+      const labelEls = document.querySelectorAll(
+        '.framer-17uiwkb-container [data-framer-name="Label"] p, ' +
+        '.framer-1rgxp2l [data-framer-name="Label"] p, ' +
+        '.re-auth-btn [data-framer-name="Label"] p, ' +
+        '.re-auth-label'
+      );
+
+      labelEls.forEach(p => {
+        if (p.innerText !== targetText) {
+          p.innerText = targetText;
+        }
+      });
     }
   };
 
@@ -492,19 +532,20 @@
 
     const text = (btn.innerText || btn.textContent || "").trim();
 
-    // 1. "Start free" / "Download Free" / "Dashboard" -> Opens User Portal
-    const isStartOrDashboard = /^(Start free|Download Free|Get ReachEngine Free|Dashboard|My Dashboard|Login|Sign In)\s*→?$/i.test(text);
-    
+    // 1. Header Action button / Login / Dashboard / Start Free -> Smart Auth Route
+    const isHeaderAuth = btn.closest('.framer-17uiwkb-container, .re-auth-btn') || 
+                         /^(Login|Sign In|Dashboard|Start free|Download Free)\s*→?$/i.test(text);
+
     // 2. "Buy Unlimited" -> Scrolls down to Pricing Table
     const isScrollPricing = /^Buy Unlimited\s*→?$/i.test(text);
 
     // 3. "Get Unlimited License" on Pricing Card -> Direct Pro Checkout
     const isDirectProCheckout = /^(Buy Pro|Get Unlimited(\s+License)?)\s*→?$/i.test(text);
 
-    if (isStartOrDashboard) {
+    if (isHeaderAuth) {
       e.preventDefault();
       e.stopPropagation();
-      window.ReachEngine.openModal("re-account-modal");
+      window.ReachEngine.handleHeaderAuthClick();
     } else if (isScrollPricing) {
       e.preventDefault();
       e.stopPropagation();
@@ -522,52 +563,35 @@
   });
 
   // -------------------------------------------------------------
-  // PERMANENT DASHBOARD LINK WATCHER (Survives Framer React Hydration)
+  // PERMANENT HEADER AUTH STATE WATCHER
   // -------------------------------------------------------------
-  function ensureDashboardLink() {
-    const navContainers = document.querySelectorAll('.framer-jfabfw, [data-framer-name="Links"]');
-    navContainers.forEach(container => {
-      if (!container.querySelector('.re-nav-dashboard, [data-re-nav="dashboard"]')) {
-        const wrap = document.createElement("div");
-        wrap.className = "framer-mt97pq re-nav-dashboard";
-        wrap.setAttribute("data-re-nav", "dashboard");
-        wrap.setAttribute("data-framer-component-type", "RichTextContainer");
-        wrap.style.cssText = "transform: none; opacity: 1; display: inline-flex; align-items: center;";
-        wrap.innerHTML = `<p class="framer-text framer-styles-preset-6npr0q" data-styles-preset="ZS14UUP96" dir="auto" style="--framer-text-alignment:start"><a class="framer-text framer-styles-preset-1130z9r" data-styles-preset="wPSEzomut" href="#" style="color:#58E1E8; font-weight:600; text-decoration:none;">Dashboard</a></p>`;
-        
-        const anchor = wrap.querySelector("a");
-        anchor.addEventListener("click", function(ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          window.ReachEngine.openModal("re-account-modal");
-        });
-
-        container.appendChild(wrap);
-      }
-    });
+  function runSync() {
+    if (window.ReachEngine && window.ReachEngine.syncHeaderAuthUI) {
+      window.ReachEngine.syncHeaderAuthUI();
+    }
   }
 
   // 1. Initial execution
-  ensureDashboardLink();
+  runSync();
 
   // 2. DOM lifecycle hooks
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", ensureDashboardLink);
+    document.addEventListener("DOMContentLoaded", runSync);
   }
-  window.addEventListener("load", ensureDashboardLink);
+  window.addEventListener("load", runSync);
 
-  // 3. Post-hydration polling for 12 seconds (fires every 250ms)
-  const navPoll = setInterval(ensureDashboardLink, 250);
-  setTimeout(() => clearInterval(navPoll), 12000);
+  // 3. Fast post-hydration sync for 10 seconds
+  const syncTimer = setInterval(runSync, 200);
+  setTimeout(() => clearInterval(syncTimer), 10000);
 
-  // 4. MutationObserver to instantly restore Dashboard if React removes it
+  // 4. MutationObserver to instantly restore button state when React re-renders
   try {
     const observer = new MutationObserver(() => {
-      ensureDashboardLink();
+      runSync();
     });
     observer.observe(document.documentElement, { childList: true, subtree: true });
   } catch(e) {}
 
-  console.log("ReachEngine Developer Portal, Auth & License System Initialized!");
+  console.log("ReachEngine Developer Portal, Auth & Dynamic Login/Dashboard Initialized!");
 })();
 
