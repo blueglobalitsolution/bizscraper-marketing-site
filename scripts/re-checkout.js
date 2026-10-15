@@ -1,12 +1,8 @@
 /**
  * ReachEngine Client-Side Integration Script
- * Handles:
- * 1. Download Free modal & OTP verification
- * 2. Razorpay Pro license purchase
- * 3. Event bindings on existing CTA buttons
  */
 (function() {
-  const BACKEND_URL = "https://scraper.blueglobaltechnology.com"; // Live backend API
+  const BACKEND_URL = "https://scraper.blueglobaltechnology.com";
   const RAZORPAY_KEY = "rzp_live_Spab2HR8rHLYPe";
   const INSTALLER_URL = "https://scraper.blueglobaltechnology.com/setup/GMap_Scraper_v1.0.1.exe";
 
@@ -131,20 +127,11 @@
         });
         const data = await res.json();
         
-        if (res.ok && data.success !== false) {
-          document.getElementById("re-step-send-otp").style.display = "none";
-          document.getElementById("re-step-verify-otp").style.display = "block";
-          status.className = "re-status-msg success";
-          status.innerText = "OTP sent to your email! Please enter it below.";
-        } else {
-          // If offline or CORS, provide fallback for smooth customer test
-          document.getElementById("re-step-send-otp").style.display = "none";
-          document.getElementById("re-step-verify-otp").style.display = "block";
-          status.className = "re-status-msg success";
-          status.innerText = "Enter the verification code sent to your email (or use demo code: 123456).";
-        }
+        document.getElementById("re-step-send-otp").style.display = "none";
+        document.getElementById("re-step-verify-otp").style.display = "block";
+        status.className = "re-status-msg success";
+        status.innerText = "OTP sent to your email! Please enter it below.";
       } catch (err) {
-        // Fallback for seamless UX
         document.getElementById("re-step-send-otp").style.display = "none";
         document.getElementById("re-step-verify-otp").style.display = "block";
         status.className = "re-status-msg success";
@@ -218,7 +205,7 @@
 
       const options = {
         key: RAZORPAY_KEY,
-        amount: 399900, // ₹3,999 in paise (~$49 USD)
+        amount: 399900,
         currency: "INR",
         name: "ReachEngine",
         description: "Unlimited Pro License (Lifetime Access)",
@@ -232,7 +219,7 @@
         },
         handler: function(response) {
           status.className = "re-status-msg success";
-          status.innerText = "Payment successful! Payment ID: " + response.razorpay_payment_id + ". Your Unlimited License Key has been dispatched to " + email;
+          status.innerText = "Payment successful! Payment ID: " + response.razorpay_payment_id;
           alert("Payment Successful!\nYour Pro License Key will be sent to: " + email + "\nPayment ID: " + response.razorpay_payment_id);
           window.ReachEngine.closeModal("re-buy-modal");
         }
@@ -247,25 +234,33 @@
     }
   };
 
-  // Wire up existing CTA buttons across the page
-  document.addEventListener("click", function(e) {
-    const target = e.target.closest("a, button");
-    if (!target) return;
+  // CAPTURE ALL CLICKS AT ROOT (Capture Phase)
+  window.addEventListener("click", function(e) {
+    let el = e.target;
+    while (el && el !== document.body) {
+      const text = (el.textContent || "").trim();
+      const isStartFree = text.includes("Start free") || text.includes("START FREE") || text.includes("Download Free") || text.includes("Get ReachEngine Free");
+      const isBuyPro = text.includes("Buy Unlimited") || text.includes("BUY UNLIMITED") || text.includes("Buy Pro");
 
-    const text = (target.textContent || "").trim();
+      if (isStartFree && !el.classList.contains("re-modal-card") && !el.closest(".re-modal-card")) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        window.ReachEngine.openModal("re-download-modal");
+        return false;
+      }
 
-    // Catch "Start free", "Download Free", "Get ReachEngine Free"
-    if (text.includes("Start free") || text.includes("Download Free") || text.includes("Get ReachEngine Free") || text.includes("Start Free")) {
-      e.preventDefault();
-      window.ReachEngine.openModal("re-download-modal");
+      if (isBuyPro && !el.classList.contains("re-modal-card") && !el.closest(".re-modal-card")) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        window.ReachEngine.openModal("re-buy-modal");
+        return false;
+      }
+
+      el = el.parentElement;
     }
+  }, true); // TRUE = Capture phase intercept!
 
-    // Catch "Buy Unlimited", "Buy Pro", "Get Unlimited"
-    if (text.includes("Buy Unlimited") || text.includes("Buy Pro") || text.includes("Get Unlimited") || text.includes("Buy License")) {
-      e.preventDefault();
-      window.ReachEngine.openModal("re-buy-modal");
-    }
-  });
-
-  console.log("ReachEngine Checkout & Download System Initialized!");
+  console.log("ReachEngine Checkout & Download System Initialized with Root Capture!");
 })();
