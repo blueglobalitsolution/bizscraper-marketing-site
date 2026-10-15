@@ -23,6 +23,9 @@
 
         <!-- 1. AUTHENTICATION VIEW (Sign Up / Sign In) -->
         <div id="re-auth-view" style="${currentUser ? 'display: none;' : 'display: block;'}">
+          <div id="re-auth-payment-notice" style="display: none; background: rgba(200, 255, 60, 0.1); border: 1px solid #C8FF3C; color: #C8FF3C; border-radius: 4px; padding: 10px 14px; font-size: 13px; margin-bottom: 14px; text-align: center; line-height: 1.4;">
+            <strong>&#128274; Account Required:</strong> Please sign in or create an account first. You will be taken directly to Pro payment right after.
+          </div>
           <div class="re-tab-bar">
             <button id="re-tab-reg-btn" class="re-tab-btn active" onclick="window.ReachEngine.switchAuthTab('register')">Create Account</button>
             <button id="re-tab-login-btn" class="re-tab-btn" onclick="window.ReachEngine.switchAuthTab('login')">Sign In</button>
@@ -176,6 +179,9 @@
     closeModal: function(modalId) {
       const modal = document.getElementById(modalId || "re-account-modal");
       if (modal) modal.classList.remove("active");
+      this.pendingPayment = false;
+      const notice = document.getElementById("re-auth-payment-notice");
+      if (notice) notice.style.display = "none";
     },
 
     switchAuthTab: function(tab) {
@@ -248,6 +254,16 @@
       btn.innerText = "Create Account & Enter Dashboard \u2192";
 
       this.renderDashboardState();
+
+      if (this.pendingPayment) {
+        this.pendingPayment = false;
+        const notice = document.getElementById("re-auth-payment-notice");
+        if (notice) notice.style.display = "none";
+        this.closeModal("re-account-modal");
+        setTimeout(() => {
+          this.handleProPayment();
+        }, 350);
+      }
     },
 
     // 2. Login via OTP Flow
@@ -337,6 +353,16 @@
       btn.innerText = "Verify & Open Dashboard \u2192";
 
       this.renderDashboardState();
+
+      if (this.pendingPayment) {
+        this.pendingPayment = false;
+        const notice = document.getElementById("re-auth-payment-notice");
+        if (notice) notice.style.display = "none";
+        this.closeModal("re-account-modal");
+        setTimeout(() => {
+          this.handleProPayment();
+        }, 350);
+      }
     },
 
     // 3. Key Generation & Management
@@ -444,6 +470,17 @@
 
     // 5. Razorpay Pro Upgrade Flow
     handleProPayment: function() {
+      // Check if user is logged in before allowing payment!
+      if (!this.currentUser) {
+        this.pendingPayment = true;
+        this.switchAuthTab("login");
+        this.openModal("re-account-modal");
+
+        const notice = document.getElementById("re-auth-payment-notice");
+        if (notice) notice.style.display = "block";
+        return;
+      }
+
       if (typeof Razorpay === "undefined") {
         alert("Payment gateway loading... please retry in 2 seconds.");
         return;
@@ -486,6 +523,10 @@
 
     // 6. Header Auth Button Click Handler
     handleHeaderAuthClick: function() {
+      this.pendingPayment = false;
+      const notice = document.getElementById("re-auth-payment-notice");
+      if (notice) notice.style.display = "none";
+
       if (this.currentUser) {
         // Logged in: open Dashboard View directly
         this.openModal("re-account-modal");
