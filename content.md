@@ -16,7 +16,7 @@
   - `Workflow` (#workflow)
   - `Live Fleet / Telemetry` (#telemetry)
   - `Pricing` (#pricing)
-  - `Launch Log` (`/pages/launch-log.html` — *Changelog & Updates*)
+  - `Blogs` (`/pages/launch-log.html` — *Blogs, Guides & Updates*)
 - **Primary CTA Button:** `Download Free v1.0.1` (Links to direct installer or registration modal)
 - **Secondary Link:** `Login / Dashboard` (OTP email authentication to manage activation keys)
 
