@@ -521,5 +521,53 @@
     }
   });
 
+  // -------------------------------------------------------------
+  // PERMANENT DASHBOARD LINK WATCHER (Survives Framer React Hydration)
+  // -------------------------------------------------------------
+  function ensureDashboardLink() {
+    const navContainers = document.querySelectorAll('.framer-jfabfw, [data-framer-name="Links"]');
+    navContainers.forEach(container => {
+      if (!container.querySelector('.re-nav-dashboard, [data-re-nav="dashboard"]')) {
+        const wrap = document.createElement("div");
+        wrap.className = "framer-mt97pq re-nav-dashboard";
+        wrap.setAttribute("data-re-nav", "dashboard");
+        wrap.setAttribute("data-framer-component-type", "RichTextContainer");
+        wrap.style.cssText = "transform: none; opacity: 1; display: inline-flex; align-items: center;";
+        wrap.innerHTML = `<p class="framer-text framer-styles-preset-6npr0q" data-styles-preset="ZS14UUP96" dir="auto" style="--framer-text-alignment:start"><a class="framer-text framer-styles-preset-1130z9r" data-styles-preset="wPSEzomut" href="#" style="color:#58E1E8; font-weight:600; text-decoration:none;">Dashboard</a></p>`;
+        
+        const anchor = wrap.querySelector("a");
+        anchor.addEventListener("click", function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          window.ReachEngine.openModal("re-account-modal");
+        });
+
+        container.appendChild(wrap);
+      }
+    });
+  }
+
+  // 1. Initial execution
+  ensureDashboardLink();
+
+  // 2. DOM lifecycle hooks
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", ensureDashboardLink);
+  }
+  window.addEventListener("load", ensureDashboardLink);
+
+  // 3. Post-hydration polling for 12 seconds (fires every 250ms)
+  const navPoll = setInterval(ensureDashboardLink, 250);
+  setTimeout(() => clearInterval(navPoll), 12000);
+
+  // 4. MutationObserver to instantly restore Dashboard if React removes it
+  try {
+    const observer = new MutationObserver(() => {
+      ensureDashboardLink();
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  } catch(e) {}
+
   console.log("ReachEngine Developer Portal, Auth & License System Initialized!");
 })();
+
