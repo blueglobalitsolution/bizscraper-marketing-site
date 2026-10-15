@@ -517,62 +517,109 @@
           p.innerText = targetText;
         }
       });
+
+      // Neutralize any navigation href on header/auth buttons
+      document.querySelectorAll(
+        '.framer-17uiwkb-container a, ' +
+        '.framer-q1184d-container a, ' +
+        '.framer-1kr6syq-container a, ' +
+        '.framer-a178m2-container a, ' +
+        '.re-auth-btn, ' +
+        '[data-re-auth="true"]'
+      ).forEach(a => {
+        if (a.getAttribute('href') !== 'javascript:void(0);') {
+          a.setAttribute('href', 'javascript:void(0);');
+        }
+      });
     }
   };
 
-  // TARGETED CLICK HANDLER: Open Account/Dashboard Portal or Scroll to Pricing
+  // TARGETED CLICK HANDLER (CAPTURE PHASE): Intercept clicks before Framer router or browser navigates
   document.addEventListener("click", function(e) {
-    const btn = e.target.closest("a, button, div[tabindex='0']");
-    if (!btn) return;
+    const target = e.target;
+    if (!target) return;
 
     // Never intercept inside the modal itself
-    if (btn.closest(".re-modal-card") || btn.classList.contains("re-modal-close")) {
+    if (target.closest(".re-modal-card") || target.classList.contains("re-modal-close")) {
       return;
     }
 
+    const btn = target.closest("a, button, div[tabindex='0'], [data-framer-name='Primary'], [data-framer-name='Outline']");
+    if (!btn) return;
+
+    // Check containers
+    const isHeaderContainer = btn.closest('.framer-17uiwkb-container, .framer-q1184d-container, .re-auth-btn');
+    const isStarterCard = btn.closest('.framer-1kr6syq-container');
+    const isBottomStart = btn.closest('.framer-a178m2-container');
+    const isProCard = btn.closest('.framer-wgq8c2-container, .framer-14hws8g-container');
+
     const text = (btn.innerText || btn.textContent || "").trim();
 
-    // 1. Header Action button / Login / Dashboard / Start Free -> Smart Auth Route
-    const isHeaderAuth = btn.closest('.framer-17uiwkb-container, .re-auth-btn') || 
-                         /^(Login|Sign In|Dashboard|Start free|Download Free)\s*→?$/i.test(text);
+    // 1. Auth triggers: Header button, "Start free", "Login", "Dashboard", etc.
+    const isAuthTrigger = isHeaderContainer ||
+                          isStarterCard ||
+                          isBottomStart ||
+                          btn.hasAttribute('data-re-auth') ||
+                          /^(Login|Sign In|Dashboard|Start free|Start Free|Start|Download Free)(\s*→)?$/i.test(text) ||
+                          text.toLowerCase().startsWith("start free") ||
+                          text.toLowerCase().startsWith("login") ||
+                          text.toLowerCase().startsWith("dashboard");
 
-    // 2. "Buy Unlimited" -> Scrolls down to Pricing Table
+    // 2. Pro checkout triggers: "Get Unlimited License", "Buy Pro"
+    const isProTrigger = isProCard ||
+                         btn.hasAttribute('data-re-buy') ||
+                         /^(Buy Pro|Get Unlimited(\s+License)?)(\s*→)?$/i.test(text) ||
+                         text.toLowerCase().includes("unlimited license");
+
+    // 3. Scroll to pricing
     const isScrollPricing = /^Buy Unlimited\s*→?$/i.test(text);
 
-    // 3. "Get Unlimited License" on Pricing Card -> Direct Pro Checkout
-    const isDirectProCheckout = /^(Buy Pro|Get Unlimited(\s+License)?)\s*→?$/i.test(text);
-
-    if (isHeaderAuth) {
+    if (isAuthTrigger) {
       e.preventDefault();
       e.stopPropagation();
+      e.stopImmediatePropagation();
       window.ReachEngine.handleHeaderAuthClick();
-    } else if (isScrollPricing) {
+      return false;
+    }
+
+    if (isProTrigger) {
       e.preventDefault();
       e.stopPropagation();
+      e.stopImmediatePropagation();
+      window.ReachEngine.handleProPayment();
+      return false;
+    }
+
+    if (isScrollPricing) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
       const pricingSection = document.getElementById("pricing") || document.querySelector('[data-framer-name="Pricing"]');
       if (pricingSection) {
         pricingSection.scrollIntoView({ behavior: "smooth" });
       } else {
         window.location.hash = "pricing";
       }
-    } else if (isDirectProCheckout) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.ReachEngine.handleProPayment();
+      return false;
     }
-  });
+  }, true); // <-- CAPTURE PHASE! Runs BEFORE Framer router or native navigation
 
-  // Initial check on load
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function() {
-      if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
+  // Initial check on load and post-hydration passes
+  function scheduleSync() {
+    if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
+    [100, 300, 600, 1200, 2500].forEach(delay => {
+      setTimeout(() => {
+        if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
+      }, delay);
     });
-  } else {
-    if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
   }
-  window.addEventListener("load", function() {
-    if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
-  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", scheduleSync);
+  } else {
+    scheduleSync();
+  }
+  window.addEventListener("load", scheduleSync);
 
   console.log("ReachEngine Developer Portal, Auth & Dynamic Login/Dashboard Initialized!");
 })();
