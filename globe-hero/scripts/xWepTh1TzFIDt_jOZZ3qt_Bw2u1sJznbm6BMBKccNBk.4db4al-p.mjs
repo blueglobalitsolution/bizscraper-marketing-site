@@ -3853,7 +3853,7 @@ kf()}));function jf(e,t){let n=(e||t).trim(),r=n.match(/^#([0-9a-f]{6})$/i);if(r
 .stw-tag b{font-weight:400;opacity:0;max-width:0;overflow:hidden;transition:opacity .4s,max-width .5s}
 .stw-tag.on span{border-color:${d};color:${d}}
 .stw-tag.on b{opacity:.8;max-width:140px}
-.stw-lens{display:none!important;position:absolute;left:0;top:0;margin:22px 0 0 22px;padding:9px 11px 10px;min-width:150px;background:rgba(4,9,12,.72);border:1px solid rgba(88,225,232,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:500 9px/1.2 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,251,250,.6);pointer-events:none;will-change:transform,opacity;opacity:0}
+.stw-lens{position:absolute;left:0;top:0;margin:22px 0 0 22px;padding:9px 11px 10px;min-width:150px;background:rgba(4,9,12,.72);border:1px solid rgba(88,225,232,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:500 9px/1.2 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,251,250,.6);pointer-events:none;will-change:transform,opacity;opacity:0}
 .stw-lens .t{font:500 22px/1.1 "Geist Mono",monospace;letter-spacing:-.02em;color:${u};margin:4px 0 2px;text-transform:none}
 .stw-lens.hot{border-color:rgba(255,90,60,.6)}.stw-lens.hot .t{color:${m}}
 .stw-lens .y{margin-top:7px;padding-top:6px;border-top:1px solid rgba(247,251,250,.14);color:${d}}
