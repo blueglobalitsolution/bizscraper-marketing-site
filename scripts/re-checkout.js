@@ -247,13 +247,23 @@
     const text = (btn.innerText || btn.textContent || "").trim();
 
     // STRICT CHECK: Only trigger for actual Download/Start buttons, NEVER navigation links!
-    const isExactStartFree = /^Start free\s*→?$/i.test(text) || /^Download Free\s*→?$/i.test(text) || /^Get ReachEngine Free\s*→?$/i.test(text);
-    const isExactBuyPro = /^Buy Unlimited\s*→?$/i.test(text) || /^Buy Pro\s*→?$/i.test(text) || /^Get Unlimited\s*→?$/i.test(text);
+    const isExactStartFree = /^(Start free|Download Free|Get ReachEngine Free)\s*→?$/i.test(text);
+    const isExactScrollPricing = /^Buy Unlimited\s*→?$/i.test(text);
+    const isExactBuyPro = /^(Buy Pro|Get Unlimited(\s+License)?)\s*→?$/i.test(text);
 
     if (isExactStartFree) {
       e.preventDefault();
       e.stopPropagation();
       window.ReachEngine.openModal("re-download-modal");
+    } else if (isExactScrollPricing) {
+      e.preventDefault();
+      e.stopPropagation();
+      const pricingSection = document.getElementById("pricing") || document.querySelector('[data-framer-name="Pricing"]');
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.hash = "pricing";
+      }
     } else if (isExactBuyPro) {
       e.preventDefault();
       e.stopPropagation();

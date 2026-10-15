@@ -1,4 +1,4 @@
-﻿<html dir="ltr"><head>
+<html dir="ltr"><head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<meta name="generator" content="Framer f9faa6c">
@@ -510,28 +510,56 @@
 
 <div id="autoglm-main-content" class="autoglm-main-content" data-version="0.1.6"></div>
 <script>
-document.addEventListener("click", function(e) {
-  var el = e.target;
-  while (el && el !== document.body) {
-    var txt = (el.textContent || "").trim();
-    if (txt.includes("Download Free") || txt.includes("DOWNLOAD FREE")) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (window.parent && window.parent.ReachEngine) {
-        window.parent.ReachEngine.openModal("re-download-modal");
-      }
-      return false;
+(function() {
+  function handleDownloadFree(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (window.parent && window.parent.ReachEngine) {
+      window.parent.ReachEngine.openModal("re-download-modal");
     }
-    if (txt.includes("Buy Unlimited") || txt.includes("BUY UNLIMITED")) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (window.parent && window.parent.ReachEngine) {
-        window.parent.ReachEngine.openModal("re-buy-modal");
-      }
-      return false;
-    }
-    el = el.parentElement;
+    return false;
   }
-}, true);
+
+  function handleBuyUnlimited(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (window.parent) {
+      var pricingEl = window.parent.document.getElementById("pricing") || window.parent.document.querySelector('[data-framer-name="Pricing"]');
+      if (pricingEl) {
+        pricingEl.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.parent.location.hash = "pricing";
+      }
+    }
+    return false;
+  }
+
+  document.addEventListener("click", function(e) {
+    // 1. Download Free Button (Exact Match only)
+    var freeBtn = e.target.closest('[data-framer-name="Button Quote"], [data-framer-name="Button Download Free"], .framer-14c5xy9, .framer-1mmla3r, .framer-1v9p5qu, .framer-2azym2');
+    if (freeBtn) {
+      return handleDownloadFree(e);
+    }
+
+    // 2. Buy Unlimited Button (Scrolls to Pricing)
+    var buyBtn = e.target.closest('[data-framer-name="Button Track"], [data-framer-name="Button Buy Unlimited"], .framer-a5atdv, .framer-bkdbdt');
+    if (buyBtn) {
+      return handleBuyUnlimited(e);
+    }
+  }, true);
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      var freeBtn = e.target.closest('[data-framer-name="Button Quote"], [data-framer-name="Button Download Free"], .framer-14c5xy9, .framer-1mmla3r, .framer-1v9p5qu, .framer-2azym2');
+      if (freeBtn) {
+        return handleDownloadFree(e);
+      }
+      var buyBtn = e.target.closest('[data-framer-name="Button Track"], [data-framer-name="Button Buy Unlimited"], .framer-a5atdv, .framer-bkdbdt');
+      if (buyBtn) {
+        return handleBuyUnlimited(e);
+      }
+    }
+  });
+})();
 </script>
 </body></html>
