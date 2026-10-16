@@ -525,18 +525,7 @@
 
     // 6. Header Auth Button Click Handler
     handleHeaderAuthClick: function() {
-      this.pendingPayment = false;
-      const notice = document.getElementById("re-auth-payment-notice");
-      if (notice) notice.style.display = "none";
-
-      if (this.currentUser) {
-        // Logged in: open Dashboard View directly
-        this.openModal("re-account-modal");
-      } else {
-        // Not logged in: open Sign In tab directly
-        this.switchAuthTab("login");
-        this.openModal("re-account-modal");
-      }
+      window.location.href = `${BACKEND_URL}/dashboard`;
     },
 
     // 7. Sync Header Action Button (Login vs Dashboard)
@@ -598,30 +587,44 @@
 
     const text = (btn.innerText || btn.textContent || "").trim();
 
-    // 1. Auth triggers: Header button, "Start free", "Login", "Dashboard", etc.
+    // 1. Download / Start Free triggers: Direct .exe download
+    const isDownloadTrigger = isStarterCard ||
+                              isBottomStart ||
+                              /^(Start free|Start Free|Download Free|Download|Install)(\s*→)?$/i.test(text) ||
+                              text.toLowerCase().includes("download") ||
+                              text.toLowerCase().startsWith("start free");
+
+    // 2. Auth / Login triggers: Header button, "Login", "Sign In", "Dashboard"
     const isAuthTrigger = isHeaderContainer ||
-                          isStarterCard ||
-                          isBottomStart ||
                           btn.hasAttribute('data-re-auth') ||
-                          /^(Login|Sign In|Dashboard|Start free|Start Free|Start|Download Free)(\s*→)?$/i.test(text) ||
-                          text.toLowerCase().startsWith("start free") ||
+                          /^(Login|Sign In|Dashboard)(\s*→)?$/i.test(text) ||
                           text.toLowerCase().startsWith("login") ||
+                          text.toLowerCase().startsWith("sign in") ||
                           text.toLowerCase().startsWith("dashboard");
 
-    // 2. Pro checkout triggers: "Get Unlimited License", "Buy Pro"
+    // 3. Pro checkout triggers: "Get Unlimited License", "Buy Pro"
     const isProTrigger = isProCard ||
                          btn.hasAttribute('data-re-buy') ||
                          /^(Buy Pro|Get Unlimited(\s+License)?)(\s*→)?$/i.test(text) ||
                          text.toLowerCase().includes("unlimited license");
 
-    // 3. Scroll to pricing
+    // 4. Scroll to pricing
     const isScrollPricing = /^Buy Unlimited\s*→?$/i.test(text);
+
+    if (isDownloadTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      window.location.href = INSTALLER_URL;
+      return false;
+    }
 
     if (isAuthTrigger) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      window.ReachEngine.handleHeaderAuthClick();
+      // Redirect to Master App User Dashboard
+      window.location.href = `${BACKEND_URL}/dashboard`;
       return false;
     }
 
