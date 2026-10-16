@@ -2,9 +2,11 @@
  * ReachEngine Client-Side Authentication, Dashboard & Checkout System
  */
 (function() {
-  const BACKEND_URL = "https://scraper.blueglobaltechnology.com";
+  // Dynamic Backend & API Configuration
+  const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+  const BACKEND_URL = isLocal ? "http://localhost:8765" : "https://app.bizscraper.in";
   const RAZORPAY_KEY = "rzp_live_Spab2HR8rHLYPe";
-  const INSTALLER_URL = "https://scraper.blueglobaltechnology.com/setup/GMap_Scraper_v1.0.1.exe";
+  const INSTALLER_URL = `${BACKEND_URL}/setup/GMap_Scraper_v1.0.1.exe`;
 
   // Check existing session
   let currentUser = null;
@@ -645,9 +647,31 @@
     }
   }, true); // <-- CAPTURE PHASE! Runs BEFORE Framer router or native navigation
 
+  // Dynamic Plans Loader from CMS API
+  async function loadDynamicPricingPlans() {
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/v1/plans`);
+      const data = await res.json();
+      if (data && data.status === "success" && data.plans && data.plans.length > 0) {
+        window.ReachEnginePlans = data.plans;
+        // Dynamically update Pro plan price display if element exists
+        const proPlan = data.plans.find(p => p.tier === "pro" || p.plan_id.includes("pro")) || data.plans[data.plans.length - 1];
+        if (proPlan) {
+          const proPriceEls = document.querySelectorAll('.framer-wgq8c2-container .framer-price, .framer-14hws8g-container .framer-price');
+          proPriceEls.forEach(el => {
+            el.innerText = `₹${proPlan.price.toLocaleString("en-IN")}`;
+          });
+        }
+      }
+    } catch(err) {
+      console.warn("Using offline fallback pricing plans:", err);
+    }
+  }
+
   // Initial check on load and post-hydration passes
   function scheduleSync() {
     if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
+    loadDynamicPricingPlans();
     [100, 300, 600, 1200, 2500].forEach(delay => {
       setTimeout(() => {
         if (window.ReachEngine) window.ReachEngine.syncHeaderAuthUI();
@@ -662,6 +686,6 @@
   }
   window.addEventListener("load", scheduleSync);
 
-  console.log("ReachEngine Developer Portal, Auth & Dynamic Login/Dashboard Initialized!");
+  console.log("BizScraper Developer Portal, Auth & Dynamic CMS Plans Initialized!");
 })();
 
