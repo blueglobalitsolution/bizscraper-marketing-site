@@ -15,146 +15,11 @@
     if (saved) currentUser = JSON.parse(saved);
   } catch(e) {}
 
-  // Create Modal HTML Elements
+  // Create Modal HTML Elements (Empty - Redirecting to Master App)
   const modalContainer = document.createElement("div");
-  modalContainer.innerHTML = `
-    <!-- User Account & Dashboard Portal Modal -->
-    <div id="re-account-modal" class="re-modal-overlay">
-      <div id="re-account-card" class="re-modal-card ${currentUser ? 'dashboard-mode' : ''}">
-        <button class="re-modal-close" onclick="window.ReachEngine.closeModal('re-account-modal')">&times;</button>
+  modalContainer.id = "re-modal-placeholder";
+  modalContainer.innerHTML = "";
 
-        <!-- 1. AUTHENTICATION VIEW (Sign Up / Sign In) -->
-        <div id="re-auth-view" style="${currentUser ? 'display: none;' : 'display: block;'}">
-          <div id="re-auth-payment-notice" style="display: none; background: rgba(200, 255, 60, 0.1); border: 1px solid #C8FF3C; color: #C8FF3C; border-radius: 4px; padding: 10px 14px; font-size: 13px; margin-bottom: 14px; text-align: center; line-height: 1.4;">
-            <strong>&#128274; Account Required:</strong> Please sign in or create an account first. You will be taken directly to Pro payment right after.
-          </div>
-          <div class="re-tab-bar">
-            <button id="re-tab-reg-btn" class="re-tab-btn active" onclick="window.ReachEngine.switchAuthTab('register')">Create Account</button>
-            <button id="re-tab-login-btn" class="re-tab-btn" onclick="window.ReachEngine.switchAuthTab('login')">Sign In</button>
-          </div>
-
-          <!-- Register Tab -->
-          <div id="re-tab-register-content">
-            <span class="re-modal-badge">Developer & Outbound Portal</span>
-            <h3 class="re-modal-title">Create ReachEngine Account</h3>
-            <p class="re-modal-desc">Sign up to get instant access to your developer dashboard, download the scraper, and generate your API key.</p>
-
-            <div class="re-input-group">
-              <label class="re-input-label">Full Name</label>
-              <input type="text" id="re-reg-name" class="re-input" placeholder="e.g. Rahul Sharma" required />
-            </div>
-            <div class="re-input-group">
-              <label class="re-input-label">Work Email</label>
-              <input type="email" id="re-reg-email" class="re-input" placeholder="you@company.com" required />
-            </div>
-            <div class="re-input-group">
-              <label class="re-input-label">Mobile Number</label>
-              <input type="tel" id="re-reg-phone" class="re-input" placeholder="+91 9876543210" required />
-            </div>
-
-            <button id="re-btn-register" class="re-btn-primary" onclick="window.ReachEngine.handleRegister()">
-              Create Account & Enter Dashboard &rarr;
-            </button>
-            <div id="re-reg-status" class="re-status-msg"></div>
-          </div>
-
-          <!-- Login Tab -->
-          <div id="re-tab-login-content" style="display: none;">
-            <span class="re-modal-badge">Client Portal</span>
-            <h3 class="re-modal-title">Sign In to Dashboard</h3>
-            <p class="re-modal-desc">Enter your registered email to access your API keys and software downloads.</p>
-
-            <div id="re-login-step-email">
-              <div class="re-input-group">
-                <label class="re-input-label">Registered Email</label>
-                <input type="email" id="re-login-email" class="re-input" placeholder="you@company.com" required />
-              </div>
-              <button id="re-btn-login-otp" class="re-btn-primary" onclick="window.ReachEngine.handleLoginOtp()">
-                Send Login OTP &rarr;
-              </button>
-            </div>
-
-            <div id="re-login-step-verify" style="display: none;">
-              <div class="re-input-group">
-                <label class="re-input-label">Enter 6-Digit OTP</label>
-                <input type="text" id="re-login-otp-code" class="re-input" placeholder="123456" maxlength="6" />
-              </div>
-              <button id="re-btn-verify-login" class="re-btn-primary" onclick="window.ReachEngine.handleVerifyLogin()">
-                Verify & Open Dashboard &rarr;
-              </button>
-            </div>
-            <div id="re-login-status" class="re-status-msg"></div>
-          </div>
-        </div>
-
-        <!-- 2. USER DASHBOARD VIEW (When Logged In) -->
-        <div id="re-dash-view" style="${currentUser ? 'display: block;' : 'display: none;'}">
-          <div class="re-dash-user">
-            <div>
-              <span id="re-dash-plan-badge" class="re-modal-badge">${currentUser && currentUser.plan === 'pro' ? 'Unlimited Pro' : 'Free Starter'}</span>
-              <h3 id="re-dash-username">${currentUser ? currentUser.name : 'Welcome Back'}</h3>
-              <p id="re-dash-useremail">${currentUser ? currentUser.email : ''}</p>
-            </div>
-            <button class="re-btn-logout" onclick="window.ReachEngine.handleLogout()">Sign Out</button>
-          </div>
-
-          <!-- Section 1: API / License Key Management -->
-          <div class="re-dash-section">
-            <h4 class="re-dash-section-title">
-              <span>&#128273;</span> API &amp; License Key
-            </h4>
-            <p class="re-dash-section-desc">Authenticate your Windows desktop application or use in outbound automation scripts.</p>
-
-            <div id="re-key-container" style="${currentUser && currentUser.apiKey ? 'display: block;' : 'display: none;'}">
-              <div class="re-key-wrapper">
-                <span id="re-dash-key-display" class="re-key-value">${currentUser && currentUser.apiKey ? currentUser.apiKey : 'REACH-XXXX-XXXX-XXXX'}</span>
-                <button id="re-btn-toggle-mask" class="re-btn-icon" onclick="window.ReachEngine.toggleKeyMask()">Show</button>
-                <button id="re-btn-copy-key" class="re-btn-icon" onclick="window.ReachEngine.copyKey()">Copy</button>
-              </div>
-              <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:11px; color:#8b9bb4;">
-                <span id="re-dash-quota">Quota: ${currentUser && currentUser.plan === 'pro' ? 'Unlimited Extractions' : '100 leads / task'}</span>
-                <span>Status: <strong style="color:#58E1E8;">Active</strong></span>
-              </div>
-            </div>
-
-            <div id="re-no-key-container" style="${currentUser && !currentUser.apiKey ? 'display: block;' : 'display: none;'}">
-              <button class="re-btn-generate" onclick="window.ReachEngine.generateApiKey()">
-                &#9889; Generate My API / License Key
-              </button>
-            </div>
-          </div>
-
-          <!-- Section 2: Desktop Software Download Center -->
-          <div class="re-dash-section">
-            <h4 class="re-dash-section-title">
-              <span>&#128187;</span> Desktop Lead Scraper
-            </h4>
-            <p class="re-dash-section-desc">Download ReachEngine v1.0.1 for Windows. Includes stealth anti-ban engine, proxy rotator, and 1-click Excel export.</p>
-            
-            <a href="${INSTALLER_URL}" class="re-btn-download-software" download>
-              Download Windows Software (.EXE) &darr;
-            </a>
-            <div style="font-size:11px; color:#8b9bb4; text-align:center; margin-top:8px;">
-              Windows 10 & 11 (64-bit) &middot; v1.0.1 &middot; Signed &amp; Safe
-            </div>
-          </div>
-
-          <!-- Section 3: Upgrade to Unlimited Pro (Shown if Free Plan) -->
-          <div id="re-dash-upgrade-section" class="re-dash-section" style="${currentUser && currentUser.plan === 'pro' ? 'display: none;' : 'display: block;'}">
-            <h4 class="re-dash-section-title" style="color: #C8FF3C;">
-              <span>&#128640;</span> Upgrade to Unlimited Pro
-            </h4>
-            <p class="re-dash-section-desc">Unlock unlimited leads, multi-location batch mode, zero daily caps, and lifetime priority updates for $49 (₹3,999).</p>
-            
-            <button class="re-btn-primary" style="background:#C8FF3C; color:#04090c;" onclick="window.ReachEngine.handleProPayment()">
-              Upgrade to Unlimited Pro &rarr;
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  `;
   document.body.appendChild(modalContainer);
 
   // Load Razorpay Checkout SDK dynamically
@@ -171,11 +36,7 @@
     isKeyMasked: true,
 
     openModal: function(modalId) {
-      const modal = document.getElementById(modalId || "re-account-modal");
-      if (modal) {
-        modal.classList.add("active");
-        this.renderDashboardState();
-      }
+      window.location.href = `${BACKEND_URL}/dashboard`;
     },
 
     closeModal: function(modalId) {
